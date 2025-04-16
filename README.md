@@ -8,6 +8,7 @@
 &ensp; matrix_library.cpp : The C++ version of the programmed matrix library.  
 &ensp; matrix_library.c : The C version of the programmed matrix library.  
 <ins>Build Instructions:</ins>  
+&ensp; Matrices must be hard coded into main with their entries.  
 &ensp; For matrix_library.cpp:  
 &emsp; Compile: g++ -Wall matrix_library.cpp -o matrix_library  
 &emsp; Run: ./matrix_library  
