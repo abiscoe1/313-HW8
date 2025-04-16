@@ -4,20 +4,25 @@ using namespace std;
 
 class Matrix{
 public:
+  // Constructor
   Matrix(){}
   
+  // Take in two matrices and add them together to make a new result matrix
   void addMatrices(vector<vector<int>> &matrix1, vector<vector<int>> &matrix2,
 		   vector<vector<int>> &result){
+    // Get the row and col sizes of each matrix
     int row1 = matrix1.size();
     int col1 = matrix1[0].size();
     int row2 = matrix2.size();
     int col2 = matrix2[0].size();
     
+    // If the matrices aren't the same size, you can't add them together
     if ((row1 != row2) or (col1 != col2)){
       cout << "Invalid matrix sizes." << endl;
       return;
     }
     
+    // The resulting matrix should be the same size as the two matrices being added
     result.resize(row1, vector<int>(col1));
     
     for (int i = 0; i < row1; i++){
@@ -26,6 +31,7 @@ public:
     }
   }
   
+  // The same rules as adding except the entries of each matrix will be subtracted
   void subMatrices(vector<vector<int>> &matrix1, vector<vector<int>> &matrix2,
 		   vector<vector<int>> &result){
     int row1 = matrix1.size();
@@ -46,18 +52,24 @@ public:
     }
   }
   
+  // Multiply two matrices together and get a new resulting matrix
   void multMatrices(vector<vector<int>> &matrix1, vector<vector<int>> &matrix2,
 		    vector<vector<int>> &result){
+    // Get the row and column sizes of both matrices
     int row1 = matrix1.size();
     int col1 = matrix1[0].size();
     int row2 = matrix2.size();
     int col2 = matrix2[0].size();
     
-    if ((row1 != col2) or (row2 != col1)){
+    // If the column size of the first matrix does not equal the row size of the
+    // second matrix, the matrices cannot be multiplied
+    if (col1 != row2){
       cout << "Invalid matrix sizes." << endl;
       return;
     }
-
+    
+    // Resize the result to have the row size of the first matrix and the
+    // column size of the second matrix
     result.resize(row1, vector<int>(col2));
 
     for (int i = 0; i < row1; i++){
@@ -69,6 +81,7 @@ public:
     }
   }
 
+  // Multiply a matrix by a constant and return the scaled matrix
   void multByConstant(vector<vector<int>> &matrix, int constant){
     int row = matrix.size();
     int col = matrix[0].size();
@@ -80,10 +93,13 @@ public:
     }
   }
 
+  // Transpose and return the same matrix inputted
   void transpose(vector<vector<int>> &matrix){
     int row = matrix.size();
     int col = matrix[0].size();
     vector<vector<int>> result;
+    // Size the result to be the oppposite dimensions of the original
+    // matrix
     result.resize(col, vector<int>(row));
 
     for (int i = 0; i < row; i++){
@@ -100,10 +116,12 @@ public:
     int col = matrix[0].size();
     int rowCount = 0;
 
+    // Print each entry in a matrix
     for (int i = 0; i < row; i++){
       for (int j = 0; j < col; j++){
         cout << matrix[i][j] << " ";
         rowCount++;
+        // Add a new row when the number of entries equals the number of columns
         if (rowCount == col){
           rowCount = 0;
           cout << endl;
